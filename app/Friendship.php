@@ -37,7 +37,7 @@ class Friendship extends Model
     ];
 
     /**
-     * @DateOfCreation       11 Sep 2018
+     * @DateOfCreation       11 September 2018
      * @DateOfDeprecated
      * @ShortDescription     This function insert the specified data into table
      * @LongDescription
@@ -51,7 +51,7 @@ class Friendship extends Model
     }
 
     /**
-    * @DateOfCreation         11 Sep 2018
+    * @DateOfCreation         11 September 2018
     * @ShortDescription       Get the entire pending user request for the user from other users.
                               Let’s assume user with id 1is logged in.
     * @return                 View
@@ -67,7 +67,7 @@ class Friendship extends Model
     }
 
     /**
-    * @DateOfCreation         11 Sep 2018
+    * @DateOfCreation         11 September 2018
     * @ShortDescription       Updating the status of the friend request.
                               Accepting friend request sent to recipient by sender.
     * @return                 View
@@ -81,7 +81,7 @@ class Friendship extends Model
     }
 
     /**
-    * @DateOfCreation        11 Sep 2018
+    * @DateOfCreation        11 September 2018
     * @ShortDescription      Updating the status of the friend request.
                              Denied friend request sent to recipient by sender.
     * @return                View
@@ -96,7 +96,7 @@ class Friendship extends Model
 
 
     /**
-    * @DateOfCreation         12 Sep 2018
+    * @DateOfCreation         12 September 2018
     * @ShortDescription       Get the entire pending user request for the user from other users.
                               Let’s assume user with id 1is logged in.
     * @return                 View
@@ -112,7 +112,7 @@ class Friendship extends Model
     }
 
      /**
-    * @DateOfCreation        12 Sep 2018
+    * @DateOfCreation        12 September 2018
     * @ShortDescription      Updating the image of the user profile.
     * @return                View
     */

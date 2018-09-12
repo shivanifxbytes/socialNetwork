@@ -16,12 +16,11 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/', 'UserController@postLogin');
 	Route::get('/welcome', ['as'=>'welcome','uses'=>'HomeController@index']);
 	Route::get('/friendlist', ['as'=>'friendlist','uses'=>'HomeController@viewFriendlist']);
-	Route::post('/welcome','HomeController@image');
+	Route::post('/welcome','HomeController@upload_image');
 	Route::get('add/{id}',['as'=>'add','uses'=>'HomeController@addFriend']);
 	Route::get('accept/{id}',['as'=>'accept','uses'=>'HomeController@acceptFriendships']);
 	Route::get('delete/{id}',['as'=>'accept','uses'=>'HomeController@deniedFriendship']);
 	Route::get('/friendRequest', ['as'=>'friendRequest','uses'=>'HomeController@viewFriendRequest']);
-	//Route::post('/welcome','HomeController@viewImage');
 	Route::get('/findFriend', ['as'=>'findFriend','uses'=>'HomeController@viewAllFriendlist']);
 });
 // admin

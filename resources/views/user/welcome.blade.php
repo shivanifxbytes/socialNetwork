@@ -26,10 +26,11 @@
                 <!-- Single  -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <!-- Profile Image -->
-                 
-                   <img style="width:200px; height:200px; border:1px solid grey; display: block;" name="image" src="" alt="" />
-                  
-                    <form action="" method="POST" enctype="multipart/form-data">
+                 @foreach($user_profile_image as $key => $row)
+                   <img style="width:200px; height:200px; border:1px solid grey; display: block;" name="image" src="{{ asset('public/files').'/'.$row->profile_picture}}" alt="" /><a href="{{ url('/') }}/upload_image">Upload Image</a>
+                   
+              @endforeach
+              <form action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <input type="file" name="file" id="poster"  class="form-control" />
