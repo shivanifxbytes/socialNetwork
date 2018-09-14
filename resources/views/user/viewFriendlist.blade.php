@@ -16,18 +16,11 @@
 			<!-- Product Image -->
 			<img style="width:200px; height:200px; border:1px solid grey; display: block;" src="" alt="" />
 			<!-- Product Description -->
-			<div class="product-description">
-				
+			<div class="product-description">				
 				<a>
 					<h3>{{$row->user_first_name }}&nbsp;{{$row->user_last_name }}</h3>
-				</a>
-				@if(session('code') == 1 && session('id')==$row->id )
-				<a href="{{url('add',$row->id)}}"><button class="btn btn-default">Request Sent</button></a>
-				@else
-				
-				<a href="{{url('add',$row->id)}}"><button class="btn btn-default">View Profile</button></a>
-				@endif
-			
+				</a>				
+				<a href="{{url('add',$row->id)}}"><button class="btn btn-default">View Profile</button></a>			
 			</div>
 			<hr />
 			@endforeach

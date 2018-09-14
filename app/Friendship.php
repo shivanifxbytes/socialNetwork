@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Config;
 
-class Friendship extends Model
+class Friendship 
 {
     use Notifiable;
        
@@ -54,7 +54,7 @@ class Friendship extends Model
     * @DateOfCreation         11 September 2018
     * @ShortDescription       Get the entire pending user request for the user from other users.
                               Let’s assume user with id 1is logged in.
-    * @return                 View
+    * @return [object]        [StdClass result object]
     */
     public function friendRequest($id)
     {
@@ -70,7 +70,7 @@ class Friendship extends Model
     * @DateOfCreation         11 September 2018
     * @ShortDescription       Updating the status of the friend request.
                               Accepting friend request sent to recipient by sender.
-    * @return                 View
+    * @return [object]        [StdClass result object]
     */
     public function acceptPendingFriendships($recipient_id, $sender_id)
     {
@@ -84,7 +84,7 @@ class Friendship extends Model
     * @DateOfCreation        11 September 2018
     * @ShortDescription      Updating the status of the friend request.
                              Denied friend request sent to recipient by sender.
-    * @return                View
+    * @return [object]       [StdClass result object]
     */
     public function deletePendingFriendships($recipient_id, $sender_id)
     {
@@ -94,12 +94,11 @@ class Friendship extends Model
         ->update(['status' => Config::get('constants.DENIED')]);
     }
 
-
     /**
     * @DateOfCreation         12 September 2018
     * @ShortDescription       Get the entire pending user request for the user from other users.
                               Let’s assume user with id 1is logged in.
-    * @return                 View
+    * @return [object]        [StdClass result object]
     */
     public function findFriendlist($id)
     {
@@ -111,18 +110,52 @@ class Friendship extends Model
                 ->get();
     }
 
-     /**
-    * @DateOfCreation        12 September 2018
-    * @ShortDescription      Updating the image of the user profile.
-    * @return                View
-    */
-   /* public function deletePendingFriendships($recipient_id, $sender_id)
+      /**
+     * @DateOfCreation       12 September 2018
+     * @DateOfDeprecated
+     * @ShortDescription     This function selects the specified data from table
+     * @LongDescription
+     * @param  string $table_name
+     * @param  array  $select_array
+     * @param  array  $where_array
+     * @return [object]               [StdClass result object]
+     */
+    public static function selectAsArray($table_name = '', $select_array = [], $where_array = [])
     {
-        return DB::table('friendship')
-        ->where('sender_id', '=', $sender_id)
-        ->where('recipient_id', '=', $recipient_id)
-        ->update(['status' => Config::get('constants.DENIED')]);
-    }*/
+        $result = DB::table($table_name)->select($select_array)->where($where_array)->get()->toArray();
+        return $result;
+    }
 
+    /**
+     * @DateOfCreation       12 September 2018
+     * @DateOfDeprecated
+     * @ShortDescription     This function selects the specified data from table
+     * @LongDescription
+     * @param  string $table_name
+     * @param  array  $select_array
+     * @param  array  $where_array
+     * @return [object]               [StdClass result object]
+     */
+    public static function select($table_name = '', $select_array = [], $where_array = [])
+    {
+        $result = DB::table($table_name)->select($select_array)->where($where_array)->get();
+        return $result;
+    }
 
+    /**
+     * @DateOfCreation       12 September 2018
+     * @DateOfDeprecated
+     * @ShortDescription     This function update the specified data into table
+     * @LongDescription
+     * @param  string $table_name
+     * @param  array  $update_array
+     * @param  array  $where_array
+     * @return void
+     */
+    public static function update($table_name = '', $update_array = [], $where_array = [])
+    {
+        DB::table($table_name)->where($where_array)->update($update_array);
+    }
+
+     
 }

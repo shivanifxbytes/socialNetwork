@@ -69,4 +69,58 @@ class UserController extends Controller
             }
         }
     }
+
+     /**
+    * @DateOfCreation         14 September 2018
+    * @ShortDescription       view user registration from
+    * @return                 View
+    */
+    public function register()
+    {
+        /*echo "hello";
+        die();*/
+        return view('user.register');
+    }
+
+    /**
+    * @DateOfCreation         14 September 2018
+    * @ShortDescription       Register user from user side
+    * @return                 View
+    */
+    public function userRegister(Request $request)
+    {
+        $rules = array(
+                    'user_first_name' => 'required|max:50',
+                    'user_last_name'  => 'required|max:50',
+                    'user_email'      => 'required|string|email|max:255|unique:users',
+                    'password'        => 'required|string|min:6|confirmed'
+                );
+  
+        // set validator
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            // redirect our admin back to the form with the errors from the validator
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        } else {
+            if (empty($id)) {
+                //final array of the data from the request
+                $insertData = array(
+                                    'user_first_name' => $request->input('user_first_name'),
+                                    'user_last_name'  => $request->input('user_last_name'),
+                                    'user_email'      => $request->input('user_email'),
+                                    'password'        => bcrypt($request->input("password")),
+                                    'user_status'     => 0,
+                                    'user_role_id'    => Config::get('constants.USER_ROLE')
+                                );
+                $user = User::create($insertData);
+
+                //insert data in users table
+                if ($user) {
+                    return redirect('/')->with('message', __('messages.Record_added'));
+                } else {
+                    return redirect()->back()->withInput()->withErrors(__('messages.try_again'));
+                }
+            }
+        }
+    }
 }

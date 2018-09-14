@@ -22,6 +22,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('delete/{id}',['as'=>'accept','uses'=>'HomeController@deniedFriendship']);
 	Route::get('/friendRequest', ['as'=>'friendRequest','uses'=>'HomeController@viewFriendRequest']);
 	Route::get('/findFriend', ['as'=>'findFriend','uses'=>'HomeController@viewAllFriendlist']);
+	Route::get('/logout', 'HomeController@getLogout');
+	Route::get('/register', 'UserController@register');
+	Route::post('/register', ['as'=>'register','uses'=>'UserController@userRegister']);
 });
 // admin
 Route::group(['middleware' => ['web']], function () {

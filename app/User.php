@@ -10,14 +10,13 @@ use Hootlex\Friendships\Traits\Friendable;
 class User extends Authenticatable
 {
     use Notifiable;
-        use Friendable;
+    use Friendable;
     /**
      *@ShortDescription Table for the users.
      *
      * @var String
      */
     protected $table = 'users';
-    //protected $table = 'user_profiles';
 
     /**
      * The attributes that are mass assignable.
@@ -40,10 +39,34 @@ class User extends Authenticatable
      /**
     * @DateOfCreation         07 Sep 2018
     * @ShortDescription       Load the dashboard view 
-    * @return                 View
+    *@return [object]         [StdClass result object]
     */
     public function queryData($id){
-
     return User::where('user_role_id', '!=' , Config::get('constants.ADMIN_ROLE'))->where('id', '!=' , $id)->get();
    }
+
+
+   /**
+    * @DateOfCreation         12 September 2018
+    * @ShortDescription       
+    *@return [object]         [StdClass result object]
+    */
+   public function viewUserProfile($user_id)
+   {
+   return DB::table('user_profiles')->select('profile_picture', 'user_id')->where('user_id',$user_id)->get(); 
+   }
+
+
+   /**
+    * @DateOfCreation         12 September 2018
+    * @ShortDescription       
+    *@return [object]         [StdClass result object]
+    */
+   public function updateUserProfilePicture($user_id, $fileName)
+   {
+         return DB::table('user_profiles')
+                ->where('user_id', '=', $user_id)
+                ->update(['profile_picture' => $fileName]);
+   }
+   
 }
