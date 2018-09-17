@@ -38,7 +38,7 @@ class HomeController extends Controller
     * @ShortDescription       Insert user profile picture.
     * @return                 Redirect Response
     */
-    public function upload_image(Request $request)
+    public function uploadImage(Request $request)
     {
         $user_id =  Auth::user()->id;
         request()->validate([ 'file' => 'required']);

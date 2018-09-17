@@ -14,6 +14,16 @@
     <body>
     <div class="container">
             <div class="wrapper">
+                @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @if (session('warning'))
+                        <div class="alert alert-warning">
+                            {{ session('warning') }}
+                        </div>
+                    @endif
                     <form action="" method="post" name="Login_Form" class="form-signin">       
                         <h3 class="form-signin-heading">{{ __('messages.welcome_back') }}</h3>
                             <hr class="colorgraph"><br>

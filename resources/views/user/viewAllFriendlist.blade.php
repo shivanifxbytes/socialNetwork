@@ -26,6 +26,7 @@ $i=0;
 			<a>
 				<h3>{{$row['user_first_name'] }}&nbsp;{{$row['user_last_name'] }}</h3>
 			</a>
+			{{$row['user_id'] }}
 			@if($key<$count)
 			@if(isset($friendship_records[$key]->status) && $friendship_records[$key]->status == 0)
 			<a href="{{url('cancel',$row['id'])}}"><button class="btn btn-default">Cancel Request</button></a>

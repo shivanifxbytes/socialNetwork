@@ -4,6 +4,16 @@
     <div class="box">
         <div class="col-lg-12">
             <hr>	
+            @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @if (session('warning'))
+                        <div class="alert alert-warning">
+                            {{ session('warning') }}
+                        </div>
+                    @endif
             <h2 class="intro-text text-center">{{ __('messages.register_detail')}}</h2>
             <hr>
             <p>{{ __('messages.fill_detail')}}</p>		
